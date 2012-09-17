@@ -1,0 +1,12 @@
+History.txt
+Manifest.txt
+PostInstall.txt
+README.rdoc
+Rakefile
+script/console
+script/destroy
+script/generate
+lib/scbi_fastabin/fbin_file.rb
+lib/scbi_fastabin.rb
+test/test_helper.rb
+test/test_scbi_fbin_file.rb

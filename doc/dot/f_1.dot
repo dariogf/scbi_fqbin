@@ -1,0 +1,61 @@
+digraph TopLevel {
+    label = "TopLevel"
+    compound = true
+    fontname = Arial
+    fontsize = 8
+    bgcolor = lightcyan1
+    node [
+        color = black,
+        fontname = Arial,
+        fontsize = 8
+    ]
+
+    subgraph cluster_LibreriaGz {
+        label = "LibreriaGz"
+        fillcolor = palegreen1
+        URL = "classes/LibreriaGz.html"
+        color = blue
+        fontname = Arial
+        style = filled
+        LibreriaGz [
+            shape = plaintext,
+            height = 0.01,
+            width = 0.75,
+            label = ""
+        ]
+
+    }
+
+    FbinFile [
+        fontcolor = black,
+        shape = ellipse,
+        URL = "classes/FbinFile.html",
+        color = palegoldenrod,
+        style = filled,
+        label = "FbinFile"
+    ]
+
+    FFIString [
+        fontcolor = black,
+        shape = ellipse,
+        URL = "classes/FFIString.html",
+        color = palegoldenrod,
+        style = filled,
+        label = "FFIString"
+    ]
+
+    LibreriaGz -> FbinFile [
+        ltail = cluster_LibreriaGz
+    ]
+
+    FFI__MemoryPointer [
+        URL = "classes/FFI/MemoryPointer.html",
+        label = "FFI::MemoryPointer"
+    ]
+
+    FFI__MemoryPointer -> FFIString [
+
+    ]
+
+}
+

@@ -1,0 +1,62 @@
+
+Manual of the YAGFF (Yet Another Genetic File Format)
+OGF (Optimized Genetic Format)
+
+
+First a call to :
+        error=initialize_writes(outname,1);
+
+Is needed to initialize the files.
+
+Its arguments are:
+
+- the name of the main output file and to this the suffix .index will be
+  appended for the index file.
+
+- The mode of the write:
+	1 : create a new file
+	2 : append data to already existing files
+
+It returns 
+	 0 if everything goes fine, 
+	-1 if there is a problem with already existing files, like an incorrect
+		version number 
+	-2 if there is a problem creating or opening files
+
+In case of error it writes it on stderr
+
+
+Then request to write can be done:
+
+int error_wr=write_seq(sname, fasta,qual,extras);
+
+Where sname is a char* with the name of the sequence, and fasta, qual and
+extras are char* with the fasta, qual and extras data.
+
+At the end a call to : closes_writes();
+is needed to close the opened files
+
+
+
+The reads are even easier:
+
+int read_seq(char *filename, char *seq_name, char **fasta, char **qual, char **extras)
+The arguments are:
+filename: is a char* used as input the name of the main file, .index is appended for the index file
+seq_name :  char* that contains the name of the searched sequence
+
+And the result are returned in :
+fasta, qual and extras, if they point to NULL they are malloced to bufsize=150000 bytes (defined inside the function)
+else they are used without checking its size
+
+
+
+For doing sequential reads an untested procedure is implemented:
+
+int initialize_sequential_reads(char *filename);
+
+// return -9 on EOF
+int read_data_sequential(char **seq_name, char **fasta, char **qual, char **extras)
+int close_sequential_reads();
+
+

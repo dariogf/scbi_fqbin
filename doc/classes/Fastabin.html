@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Fastabin</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Fastabin</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/scbi_fastabin/fastabin_rb.html">
+                lib/scbi_fastabin/fastabin.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+    <div id="diagram">
+      <map id="map" name="map">
+</map>
+<img src="../dot/f_0.png" usemap="#map" border="0" alt="dot/f_0.png">
+    </div>
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000005">add_fasta_qual</a>&nbsp;&nbsp;
+      <a href="#M000006">add_seq</a>&nbsp;&nbsp;
+      <a href="#M000011">close</a>&nbsp;&nbsp;
+      <a href="#M000010">count</a>&nbsp;&nbsp;
+      <a href="#M000007">each</a>&nbsp;&nbsp;
+      <a href="#M000008">each_by_index</a>&nbsp;&nbsp;
+      <a href="#M000004">new</a>&nbsp;&nbsp;
+      <a href="#M000009">read_seq</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">COMPRESSION</td>
+          <td>=</td>
+          <td class="context-item-value">Zlib::BEST_COMPRESSION</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Compression type. Valid values are Zlib::NO_COMPRESSION, Zlib::BEST_SPEED,
+Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
+9.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SEQUENCES_PER_BLOCK</td>
+          <td>=</td>
+          <td class="context-item-value">10</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">READ_BIN_REG_EXP</td>
+          <td>=</td>
+          <td class="context-item-value">/^([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)/</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">READ_REG_EXP</td>
+          <td>=</td>
+          <td class="context-item-value">/^([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)/</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(filename, mode = 'r', index_filename=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 29</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value str">'r'</span>, <span class="ruby-identifier">index_filename</span>=<span class="ruby-keyword kw">nil</span>)
+                
+                <span class="ruby-ivar">@filename</span>=<span class="ruby-identifier">filename</span>
+                <span class="ruby-ivar">@index_filename</span> = <span class="ruby-identifier">index_filename</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">'.index'</span>;
+                <span class="ruby-ivar">@bin_file</span> = <span class="ruby-keyword kw">nil</span>
+                <span class="ruby-ivar">@need_to_regenerate_index</span>=<span class="ruby-keyword kw">false</span>
+
+                <span class="ruby-ivar">@added_sequence_count</span>=<span class="ruby-value">0</span>
+                
+                <span class="ruby-comment cmt"># check open mode read or write</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">upcase</span>.<span class="ruby-identifier">index</span>(<span class="ruby-value str">'W'</span>)
+                        <span class="ruby-identifier">bin_mode</span>=<span class="ruby-value str">'wb'</span>
+                        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-ivar">@index_filename</span>)
+                                <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-ivar">@index_filename</span>)
+                        <span class="ruby-keyword kw">end</span>
+                <span class="ruby-keyword kw">else</span>
+                
+                        <span class="ruby-comment cmt"># if read mode, check if file exits</span>
+                        <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">filename</span>)
+                                <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;File #{filename} doesn't exists'&quot;</span>
+                        <span class="ruby-keyword kw">end</span>
+        
+                        <span class="ruby-comment cmt"># if index doesn't exits, recreate it</span>
+                        <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-ivar">@index_filename</span>)
+                          <span class="ruby-identifier">regenerate_index</span>
+                        <span class="ruby-keyword kw">end</span>
+
+                        <span class="ruby-comment cmt"># check open mode</span>
+                        <span class="ruby-identifier">bin_mode</span> = <span class="ruby-value str">'rb'</span>      
+                        
+                <span class="ruby-keyword kw">end</span>
+                
+                <span class="ruby-comment cmt">#open files</span>
+                <span class="ruby-ivar">@bin_io</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>,<span class="ruby-identifier">bin_mode</span>)                
+                <span class="ruby-ivar">@bin_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@bin_io</span>)
+                
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">add_fasta_qual</span><span class="method-args">(fasta_file_name,qual_file_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 71</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_fasta_qual</span>(<span class="ruby-identifier">fasta_file_name</span>,<span class="ruby-identifier">qual_file_name</span>)
+
+                        <span class="ruby-comment cmt"># use FastaQualFile to read fasta</span>
+                                <span class="ruby-identifier">qf</span> = <span class="ruby-constant">FastaQualFile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">fasta_file_name</span>,<span class="ruby-identifier">qual_file_name</span>)
+
+                                
+                                <span class="ruby-comment cmt"># iterate over sequences</span>
+                                <span class="ruby-identifier">qf</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span>  <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>,<span class="ruby-identifier">fasta</span>,<span class="ruby-identifier">qual</span><span class="ruby-operator">|</span>
+
+                                                                <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">qf</span>.<span class="ruby-identifier">num_seqs</span> <span class="ruby-operator">%</span> <span class="ruby-value">10000</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                                                  <span class="ruby-identifier">puts</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span> <span class="ruby-value str">','</span> <span class="ruby-operator">+</span><span class="ruby-identifier">qf</span>.<span class="ruby-identifier">num_seqs</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">':'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>
+                                                   <span class="ruby-keyword kw">end</span>
+<span class="ruby-comment cmt">#                                                                                                   </span>
+                                                        <span class="ruby-comment cmt">#add them to fastabin </span>
+                                                        <span class="ruby-identifier">add_seq</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">fasta</span>,<span class="ruby-identifier">qual</span>,<span class="ruby-keyword kw">nil</span>)
+        
+                                <span class="ruby-keyword kw">end</span>
+
+                                <span class="ruby-identifier">qf</span>.<span class="ruby-identifier">close</span>
+
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="#M000006" class="method-signature">
+          <span class="method-name">add_seq</span><span class="method-args">(seq_name, seq_fasta, seq_qual, seq_extras=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 96</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_seq</span>(<span class="ruby-identifier">seq_name</span>, <span class="ruby-identifier">seq_fasta</span>, <span class="ruby-identifier">seq_qual</span>, <span class="ruby-identifier">seq_extras</span>=<span class="ruby-keyword kw">nil</span>)
+
+                                <span class="ruby-keyword kw">if</span> (<span class="ruby-ivar">@added_sequence_count</span> <span class="ruby-operator">%</span> <span class="ruby-constant">SEQUENCES_PER_BLOCK</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+                                                          <span class="ruby-comment cmt">#@bin_file.flush</span>
+                                                                <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">close</span>
+                                                                <span class="ruby-comment cmt">#@bin_io.close</span>
+                                                                
+                                                                <span class="ruby-ivar">@bin_io</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@filename</span>,<span class="ruby-value str">'ab'</span>)     
+                                                                <span class="ruby-ivar">@bin_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@bin_io</span>)
+                                                                <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;NEW BLOCK&quot;</span>
+                                                        
+                                <span class="ruby-keyword kw">end</span>
+                                <span class="ruby-ivar">@added_sequence_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                
+                                <span class="ruby-ivar">@need_to_regenerate_index</span> = <span class="ruby-keyword kw">true</span>
+                                
+                                <span class="ruby-identifier">zipped_fasta</span> = <span class="ruby-value str">''</span>
+                                <span class="ruby-identifier">zipped_qual</span> = <span class="ruby-value str">''</span>
+                                <span class="ruby-identifier">zipped_extras</span> = <span class="ruby-value str">''</span>
+
+                                <span class="ruby-identifier">ini</span> = <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">pos</span>
+                                
+                                <span class="ruby-comment cmt"># get current pos and write deflated data to fastabin format</span>
+                             <span class="ruby-comment cmt">#zipped_fasta = deflate_fasta(seq_fasta.strip)</span>
+                             <span class="ruby-identifier">zipped_fasta</span> = <span class="ruby-identifier">seq_fasta</span>.<span class="ruby-identifier">strip</span>
+
+                                <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">seq_qual</span>.<span class="ruby-identifier">empty?</span>
+                                  <span class="ruby-identifier">q</span> = <span class="ruby-identifier">seq_qual</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">' '</span>)
+                                  <span class="ruby-identifier">q</span>.<span class="ruby-identifier">map!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_i</span><span class="ruby-operator">+</span><span class="ruby-value">33</span>).<span class="ruby-identifier">chr</span>}
+                                        <span class="ruby-comment cmt">#zipped_qual = deflate_qual(q.join)</span>
+                                        <span class="ruby-identifier">zipped_qual</span> = <span class="ruby-identifier">q</span>.<span class="ruby-identifier">join</span>
+                                        
+                                  <span class="ruby-comment cmt">#puts q.join</span>
+                                  <span class="ruby-comment cmt">#raise</span>
+                                        <span class="ruby-comment cmt">#zipped_qual = deflate_qual(seq_qual.strip)</span>
+
+                                <span class="ruby-keyword kw">end</span>
+
+                                <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">seq_extras</span>.<span class="ruby-identifier">nil?</span>
+                                        <span class="ruby-comment cmt">#zipped_extras = deflate_extras(seq_extras)</span>
+                                        <span class="ruby-identifier">zipped_extras</span> = <span class="ruby-identifier">seq_extras</span>
+                                <span class="ruby-keyword kw">end</span>
+                
+                                <span class="ruby-comment cmt"># write data to index file and bin (to retrieve it later if index file gets lost)</span>
+                                <span class="ruby-identifier">head</span> = <span class="ruby-node">&quot;#{seq_name} #{zipped_fasta.size} #{zipped_qual.size} #{zipped_extras.size}&quot;</span>
+                                <span class="ruby-identifier">bin_index_line</span> =<span class="ruby-node">&quot;#{head.size.to_s.rjust(4)}#{head}&quot;</span>
+                                
+                          <span class="ruby-comment cmt">#index_line =&quot;#{seq_name} #{ini+bin_index_line.size} #{zipped_fasta.size} #{zipped_qual.size} #{zipped_extras.size}&quot;</span>
+                                <span class="ruby-comment cmt">#puts index_line</span>
+                                <span class="ruby-comment cmt">#index_file.puts index_line</span>
+                                
+                                <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">bin_index_line</span>
+
+<span class="ruby-comment cmt">#        puts zipped_fasta</span>
+<span class="ruby-comment cmt">#                               puts zipped_qual</span>
+<span class="ruby-comment cmt">#                               puts zipped_extras</span>
+
+<span class="ruby-comment cmt">#                               puts &quot;1F:#{zipped_fasta}@#{zipped_fasta.size.to_s}@#{zipped_fasta.length.to_s}&quot;</span>
+<span class="ruby-comment cmt">#                               puts &quot;1Q:#{zipped_qual}@#{zipped_qual.size.to_s}@#{zipped_qual.length.to_s}&quot;</span>
+<span class="ruby-comment cmt">#                               puts &quot;1E:#{zipped_extras}@#{zipped_extras.size.to_s}@#{zipped_extras.length.to_s}&quot;</span>
+<span class="ruby-comment cmt">#                               </span>
+                                
+                                <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">zipped_fasta</span>
+                                <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">zipped_qual</span>
+                                <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">zipped_extras</span>
+                                
+                                
+                                
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">close</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 279</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+
+                <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">closed?</span>         
+          <span class="ruby-comment cmt">#@bin_io.close if !@bin_io.closed?</span>
+                       
+                <span class="ruby-identifier">regenerate_index</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@need_to_regenerate_index</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">count</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 266</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>
+                  <span class="ruby-identifier">index_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@index_filename</span>)
+        
+        <span class="ruby-identifier">res</span>=<span class="ruby-identifier">index_file</span>.<span class="ruby-identifier">readlines</span>.<span class="ruby-identifier">count</span>
+
+                        <span class="ruby-identifier">index_file</span>.<span class="ruby-identifier">close</span>
+                        
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">res</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">each</span><span class="method-args">(get_fasta=true,get_qual=true,get_extras=true) {|name,fasta,qual,extras| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 169</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-identifier">get_fasta</span>=<span class="ruby-keyword kw">true</span>,<span class="ruby-identifier">get_qual</span>=<span class="ruby-keyword kw">true</span>,<span class="ruby-identifier">get_extras</span>=<span class="ruby-keyword kw">true</span>)
+        
+                        <span class="ruby-comment cmt">#bin = ''</span>
+                        <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">pos</span>=<span class="ruby-value">0</span>
+        
+                        
+                        <span class="ruby-keyword kw">while</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">eof?</span>
+                        
+                        <span class="ruby-identifier">head_size</span> = <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">to_i</span>
+                                        <span class="ruby-identifier">line</span> = <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">head_size</span>)
+                        
+                                        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">READ_BIN_REG_EXP</span>
+                        
+                                                        <span class="ruby-identifier">name</span> = <span class="ruby-identifier">$1</span>
+                                                        <span class="ruby-identifier">i</span> = <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">pos</span>
+                                                        <span class="ruby-identifier">fz</span> = <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">to_i</span>
+                                                        <span class="ruby-identifier">qz</span>=<span class="ruby-identifier">$3</span>.<span class="ruby-identifier">to_i</span>
+                                                        <span class="ruby-identifier">ez</span>=<span class="ruby-identifier">$4</span>.<span class="ruby-identifier">to_i</span>
+                
+                                                        <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-identifier">fz</span><span class="ruby-operator">+</span><span class="ruby-identifier">qz</span><span class="ruby-operator">+</span><span class="ruby-identifier">ez</span>
+                                                        
+                                                        <span class="ruby-identifier">name</span>,<span class="ruby-identifier">fasta</span>,<span class="ruby-identifier">qual</span>,<span class="ruby-identifier">extras</span> = <span class="ruby-identifier">extract_seq</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">i</span>,<span class="ruby-identifier">fz</span>,<span class="ruby-identifier">qz</span>,<span class="ruby-identifier">ez</span>)
+                                                        
+                                                  <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">fasta</span>,<span class="ruby-identifier">qual</span>,<span class="ruby-identifier">extras</span>)
+                                                
+                                        <span class="ruby-keyword kw">else</span>
+                                                <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Invalid index line found at each&quot;</span>
+                                        <span class="ruby-keyword kw">end</span>
+                        
+                        <span class="ruby-keyword kw">end</span>
+        
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">each_by_index</span><span class="method-args">(get_fasta=true,get_qual=true) {|name,fasta,qual,extras| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 205</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_by_index</span>(<span class="ruby-identifier">get_fasta</span>=<span class="ruby-keyword kw">true</span>,<span class="ruby-identifier">get_qual</span>=<span class="ruby-keyword kw">true</span>)
+                          <span class="ruby-identifier">index_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@index_filename</span>)
+                          
+                                <span class="ruby-comment cmt"># iterate over each line of index_file                              </span>
+                      <span class="ruby-identifier">index_file</span>.<span class="ruby-identifier">each_line</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+
+                                                        <span class="ruby-comment cmt"># parse params</span>
+                                                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span><span class="ruby-operator">=~</span> <span class="ruby-constant">READ_REG_EXP</span>
+                                        
+                                                        <span class="ruby-identifier">name</span> = <span class="ruby-identifier">$1</span>
+                                                        <span class="ruby-identifier">i</span> = <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">to_i</span>
+                                                        <span class="ruby-identifier">fz</span> = <span class="ruby-identifier">$3</span>.<span class="ruby-identifier">to_i</span>
+                                                        <span class="ruby-identifier">qz</span>=<span class="ruby-identifier">$4</span>.<span class="ruby-identifier">to_i</span>
+                                                        <span class="ruby-identifier">ez</span>=<span class="ruby-identifier">$5</span>.<span class="ruby-identifier">to_i</span>
+                
+                                                        <span class="ruby-identifier">name</span>,<span class="ruby-identifier">fasta</span>,<span class="ruby-identifier">qual</span>,<span class="ruby-identifier">extras</span> = <span class="ruby-identifier">extract_seq</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">i</span>,<span class="ruby-identifier">fz</span>,<span class="ruby-identifier">qz</span>,<span class="ruby-identifier">ez</span>)
+                                                        
+                                                  <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">fasta</span>,<span class="ruby-identifier">qual</span>,<span class="ruby-identifier">extras</span>)
+                                      <span class="ruby-keyword kw">end</span>
+                                                        
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">index_file</span>.<span class="ruby-identifier">close</span>
+                                                                                                
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">read_seq</span><span class="method-args">(seq_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 233</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_seq</span>(<span class="ruby-identifier">seq_name</span>)
+
+          <span class="ruby-identifier">index_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@index_filename</span>)
+          
+                <span class="ruby-identifier">res</span> = <span class="ruby-keyword kw">nil</span>
+                <span class="ruby-identifier">e</span>=<span class="ruby-keyword kw">nil</span>
+                
+                <span class="ruby-identifier">index_file</span>.<span class="ruby-identifier">grep</span>(<span class="ruby-node">/^#{seq_name}\s/</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+    
+                                 <span class="ruby-identifier">e</span>=<span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp</span>
+
+                                <span class="ruby-comment cmt"># parse params</span>
+                                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span><span class="ruby-operator">=~</span> <span class="ruby-constant">READ_REG_EXP</span>
+                                        <span class="ruby-identifier">name</span> = <span class="ruby-identifier">$1</span>
+                                        <span class="ruby-identifier">i</span> = <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">to_i</span>
+                                        <span class="ruby-identifier">fz</span> = <span class="ruby-identifier">$3</span>.<span class="ruby-identifier">to_i</span>
+                                        <span class="ruby-identifier">qz</span>=<span class="ruby-identifier">$4</span>.<span class="ruby-identifier">to_i</span>
+                                        <span class="ruby-identifier">ez</span>=<span class="ruby-identifier">$5</span>.<span class="ruby-identifier">to_i</span>
+
+                                        <span class="ruby-identifier">res</span> = <span class="ruby-identifier">extract_seq</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">i</span>,<span class="ruby-identifier">fz</span>,<span class="ruby-identifier">qz</span>,<span class="ruby-identifier">ez</span>)
+                                <span class="ruby-keyword kw">end</span>
+                                <span class="ruby-keyword kw">break</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">index_file</span>.<span class="ruby-identifier">close</span>
+    
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">res</span> 
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
