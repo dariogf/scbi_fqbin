@@ -19,10 +19,10 @@ endif
 
 CC=gcc
 DEPFILE=.depend
-PROGS=mk_fbin read_fbin iterate_fbin hash_fbin fq 
-OBJS=libfbin.o
+PROGS=mk_fqbin read_fqbin iterate_fqbin hash_fqbin idx_fqbin fq 
+OBJS=lib_fqbin.o
 LIBS=-lz
-LIB_NAME=libfbin
+LIB_NAME=lib_fqbin
 
 all: $(OBJS) $(PROGS) lib
 
