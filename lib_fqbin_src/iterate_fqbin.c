@@ -1,4 +1,4 @@
-#include "libfbin.h"
+#include "lib_fqbin.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -8,7 +8,7 @@
 
 void usage(){
     
-    printf("Usage: iterate_fbin [-F|-q] fbin_file\n\n");
+    printf("Usage: iterate_fqbin [-F|-q] fqbin_file\n\n");
     printf("By default outputs in fastq format\n\n");
     printf("    -F    Output only sequence in fasta format\n");
     printf("    -q    Output only qualities in phred format\n\n");

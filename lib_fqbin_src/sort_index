@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # La entrada a fichero es el nombre del fichero sin extensión
 

@@ -7,7 +7,7 @@
 
 
 // process a fastq file adding it to fbin file
-int iterate_fastq(char *fname, int only_extras, int output_fasta, int output_extras)
+int find_in_fastq(char *fname, char *seq_name)
 {
 
     // allocate strings
@@ -63,18 +63,13 @@ int iterate_fastq(char *fname, int only_extras, int output_fasta, int output_ext
         if(valid==1)
         {
             r++;
+            if (strcmp(name,seq_name)==0)
+            {
+                printf("@%s %s\n%s\n", name,comments, fasta);
+                printf("+%s\n%s\n",name,qual);
+                break;
+            }
 
-                if (!only_extras){
-                     if (output_fasta){
-                         printf(">%s %s\n%s\n", name, comments, fasta);
-                     }else{
-                         printf("@%s %s\n%s\n", name,comments, fasta);
-                       printf("+%s\n%s\n",name,qual);
-                     }
-                }
-                
-                // if ((extras!=NULL) && (output_extras)) printf ("EXTRAS:%s\n",extras);
-            
         }else{
             fprintf(stderr,"Invalid sequence found %s. Aborting import.\n",name);
             res=-1;
@@ -102,10 +97,7 @@ int iterate_fastq(char *fname, int only_extras, int output_fasta, int output_ext
 }
 
 void usage(){
-    printf("Usage: fq [-f][-e][-E] fbin_file seq_name\n\n");
-    printf("    -f    Output sequence in fasta format\n");
-    printf("    -e    Output extras for sequence\n");
-    printf("    -E    Output only extras for sequence\n");
+    printf("Usage: read_fq fastq_file seq_name\n\n");
     
     exit(-1);
     
@@ -121,22 +113,8 @@ int main(int argc, char *argv[])
     
     int ch;
 
-    int output_fasta = 0;
-    int output_extras = 0;
-    int only_extras = 0;
-
-    while ((ch = getopt(argc, argv, "feEh")) != -1) {
+    while ((ch = getopt(argc, argv, "h")) != -1) {
             switch (ch) {
-            case 'f':
-                    output_fasta = 1;
-                    break;
-            case 'e':
-                    output_extras = 1;
-                    break;
-            case 'E':
-                    output_extras = 1;
-                    only_extras = 1;
-                    break;
 
             case 'h':
                     usage();
@@ -152,13 +130,13 @@ int main(int argc, char *argv[])
     
     
   // check params
-  if (argc<1)
+  if (argc<2)
   {
     usage();
     return -1;
   }
 
-  int res=iterate_fastq(argv[0],only_extras, output_fasta, output_extras);
+  int res=find_in_fastq(argv[0],argv[1]);
 
   return res;
 }

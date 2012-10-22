@@ -1,4 +1,4 @@
-#include "libfbin.h"
+#include "lib_fqbin.h"
 #include <stdio.h>
 #include <ctype.h>
 
@@ -7,11 +7,11 @@
 
 void usage(){
   
-    // printf("Usage: mk_fbin [-i] [-f flatten_qual] [-d discretize_qual] [-e extras_file] -o output_file [fastq_file_input_file]\n\n");
+    // printf("Usage: mk_fqbin [-i] [-f flatten_qual] [-d discretize_qual] [-e extras_file] -o output_file [fastq_file_input_file]\n\n");
     
-    printf("mk_fbin converts a fastQ input file or STDIN stream (use no filename or '-') to compressed fbin format.\n\n");
+    printf("mk_fqbin converts a fastQ input file or STDIN stream (use no filename or '-') to compressed fqbin format.\n\n");
         
-    printf("Usage: mk_fbin [OPTIONS] -o output_file [fastq_file_input_file]\n\n");
+    printf("Usage: mk_fqbin [OPTIONS] -o output_file [fastq_file_input_file]\n\n");
     
     printf("Options:\n");
     printf("    -i create random access index\n");
@@ -20,7 +20,7 @@ void usage(){
     printf("    -e extras_file: a file with extra metadata for each sequence if standard FASTA format\n");
 
     printf("Mandatory parameters:\n");
-    printf("    -o output_file: output fbin file\n");
+    printf("    -o output_file: output fqbin file\n");
     printf("    -F input is in fasta format (will look for filename.qual for qualities) \n");
     
     printf("\nSCBI - Supercomputación y Bioinformática. University of Malaga. http://www.scbi.uma.es. Copyright 2011\n\n");

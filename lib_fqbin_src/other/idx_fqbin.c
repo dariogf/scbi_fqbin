@@ -1,4 +1,4 @@
-#include "libfbin.h"
+#include "lib_fqbin.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -10,7 +10,7 @@
 
 
 void usage(){
-    printf("Usage: fbin_generate_index fbin_file\n\n");
+    printf("Usage: idx_fqbin fqbin_file\n\n");
     // printf("    -f    Output sequence in fasta format\n\n");
     
     exit(-1);

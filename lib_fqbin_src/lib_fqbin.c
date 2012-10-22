@@ -1,26 +1,5 @@
+#include "lib_fqbin.h"
 
-// #include <stdio.h>
-// #include <string.h>
-// #include <time.h>
-// 
-// 
-// #include <sys/types.h>
-// #include <sys/stat.h>
-// #include <fcntl.h>
-// #include <errno.h>
-// 
-// #include <zlib.h>
-// #include <stdlib.h>
-#include "libfbin.h"
-// #include "bwxform.h"
-
-// char dict_fasta[65536];
-// char dict_qual[65536];
-
-
-
-// static time_t curr_time=0;
-// static time_t prev_time=0;
 
 int check_error(int error_condition, char *message, int return_value){
     if (error_condition) {
@@ -61,15 +40,15 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
   long fasta_len=strlen(fasta);
 
   // preprocess fasta string
-  if (fasta_len>0)
-  {
-      // printf("IN:%s, %ld\n",fasta,strlen(fasta));
-      // BWXform(fasta, fasta,1);
-      // printf("\nOUT:\n");
-      // write(1,fasta,fasta_len);
-      // printf("\n");
-      // fflush(1);
-  }
+  // if (fasta_len>0)
+  // {
+  //     // printf("IN:%s, %ld\n",fasta,strlen(fasta));
+  //     // BWXform(fasta, fasta,1);
+  //     // printf("\nOUT:\n");
+  //     // write(1,fasta,fasta_len);
+  //     // printf("\n");
+  //     // fflush(1);
+  // }
   
   
   // preprocess quality string
@@ -94,9 +73,10 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
       for( i = 0; i < strlen(qual); ++i)
       {
 
-          //discretize up by 2
-          if (file->discretize_qual!=0){
-             qual[i]=qual[i]-(qual[i] % 2)+2-1;
+          //discretize up by discretize_qual value
+          if (file->discretize_qual>1){
+             // qual[i]=qual[i]-(qual[i] % 2)+2-1;
+             qual[i]=(qual[i] / file->discretize_qual)*file->discretize_qual;
           }
           
           // printf("FL:%c>=%c\n",qual[i],file->flatten_qual);
@@ -688,7 +668,10 @@ long long find_seq_in_index(char *filename,char *sname, long long index_chunk, l
     // gzFile filegz=gzopen(file_name,"r");
     int file=open(file_name, O_RDONLY);
         
-
+    if (file<0)
+    {
+      return -2;
+    }
     
     if(index_chunk>0)
     {
@@ -801,8 +784,8 @@ int read_seq(char *filename, char *seq_name, char **fasta, char **qual, char **e
       chunk=0;
   }
   
-  if (find_seq_in_index(filename,seq_name,chunk,&gz_chunk,&beginH)<0){
-      return -1;
+  if ((res=find_seq_in_index(filename,seq_name,chunk,&gz_chunk,&beginH))<0){
+    return res;
   };
 
 

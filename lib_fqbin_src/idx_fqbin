@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ ! -e "$1" ]; then
+    echo "File $1 does not exists"
+    echo "Usage: $0 fqbin_file.fqbin"
+    exit
+fi
+
+
+if [ -e "$1.index" ]; then
+    echo "Index file $1.index already exists"
+    exit
+fi
+
+echo "Backing up file as $1.old"
+mv $1 $1.old
+
+echo "Regenerating index"
+iterate_fqbin $1.old | mk_fqbin -i -o $1
+rm $1
+mv $1.old $1

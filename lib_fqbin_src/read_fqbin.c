@@ -1,4 +1,4 @@
-#include "libfbin.h"
+#include "lib_fqbin.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -8,7 +8,7 @@
 
 
 void usage(){
-    printf("Usage: read_fbin [-f][-e][-E] fbin_file seq_name\n\n");
+    printf("Usage: read_fqbin [-f][-e][-E] fqbin_file seq_name\n\n");
     printf("    -f    Output sequence in fasta format\n");
     printf("    -e    Output extras for sequence\n");
     printf("    -E    Output only extras for sequence\n");
@@ -70,9 +70,13 @@ int main(int argc, char *argv[])
 	  return -1;
 	}
 
-res=read_seq(argv[0],argv[1], &fasta, &qual, &extras);
+  res=read_seq(argv[0],argv[1], &fasta, &qual, &extras);
 
-
+  if (res==-2)
+  {
+    printf("Index file does not exist for: %s.index\n", argv[0]);
+    return res;
+  }
 
   if (res==0){
   
@@ -88,7 +92,7 @@ res=read_seq(argv[0],argv[1], &fasta, &qual, &extras);
    
   }
 
-	//res=read_seq("prueba2gz.fbin","F143CJN01EN6AH", &fasta, &qual, &extras);
+	//res=read_seq("prueba2gz.fqbin","F143CJN01EN6AH", &fasta, &qual, &extras);
 	if ( fasta!=NULL ) {free(fasta);fasta=NULL;}
 	if ( qual!=NULL ) {free(qual);qual=NULL;}
 	if ( extras!=NULL ) {free(extras);extras=NULL;}

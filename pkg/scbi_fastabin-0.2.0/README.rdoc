@@ -36,20 +36,20 @@ indexing and compression techniques in order to minimize disk accesses and thus 
 
 == REQUIREMENTS:
 
-*libfbin library
+*lib_fqbin library
 
-To install libfbin library, download this file http://www.scbi.uma.es/gems/libs/libfbin.zip:
+To install lib_fqbin library, download this file http://www.scbi.uma.es/gems/libs/lib_fqbin.zip:
 
 then unzip with:
 
-unzip libfbin.zip
+unzip lib_fqbin.zip
 
 and install with:
 
 make
 sudo make install
 
-By default the library will be installed to /usr/local/lib and binaries (mk_fbin, rd_seq_fbin and iterate_fbin) to /usr/local/bin
+By default the library will be installed to /usr/local/lib and binaries (mk_fqbin, rd_fqbin and iterate_fqbin) to /usr/local/bin
 
 == INSTALL:
 

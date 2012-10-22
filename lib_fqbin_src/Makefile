@@ -19,7 +19,7 @@ endif
 
 CC=gcc
 DEPFILE=.depend
-PROGS=mk_fqbin read_fqbin iterate_fqbin hash_fqbin idx_fqbin fq 
+PROGS=mk_fqbin read_fqbin iterate_fqbin hash_fqbin fq read_fq 
 OBJS=lib_fqbin.o
 LIBS=-lz
 LIB_NAME=lib_fqbin
@@ -52,13 +52,15 @@ install:
 	for prog in $(PROGS); do \
 		install -m 0755 $$prog $(bin_prefix); \
 	done; \
-	install -m 0755 sort_index.sh $(bin_prefix); 
+	install -m 0755 sort_index $(bin_prefix); 
+	install -m 0755 idx_fqbin $(bin_prefix); 
 
 uninstall:
 	rm  $(lib_prefix)/$(lib_name)
 	for prog in $(PROGS); do \
 		rm $(bin_prefix)/$$prog; \
 	done; \
-	rm $(bin_prefix)/sort_index.sh
+	rm $(bin_prefix)/sort_index
+	rm $(bin_prefix)/idx_fqbin
 	
 	

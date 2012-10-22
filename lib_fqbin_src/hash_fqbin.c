@@ -76,7 +76,7 @@ int hash_index_file(char *filename, int chunk_size, int skip_sort)
   if(skip_sort==0)
   {
       char cmd[10000];
-      snprintf(cmd,10000,"sort_index.sh %s",indexname);
+      snprintf(cmd,10000,"sort_index %s",indexname);
       system(cmd);
   }
 
@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
   // check params
   if (argc<2)
   {
-    printf("Usage %s fbin_file [chunk_size [--skip_sort]]\n\n",argv[0]);
+    printf("Usage %s fqbin_file [chunk_size [--skip_sort]]\n\n",argv[0]);
     return -1;
   }
   
