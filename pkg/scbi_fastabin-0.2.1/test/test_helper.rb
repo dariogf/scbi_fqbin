@@ -1,3 +1,3 @@
 require 'stringio'
 require 'test/unit'
-require File.dirname(__FILE__) + '/../lib/scbi_fastabin'
+require File.dirname(__FILE__) + '/../lib/scbi_fqbin'

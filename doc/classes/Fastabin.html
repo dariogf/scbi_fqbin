@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../files/lib/scbi_fastabin/fastabin_rb.html">
-                lib/scbi_fastabin/fastabin.rb
+                <a href="../files/lib/scbi_fqbin/fastabin_rb.html">
+                lib/scbi_fqbin/fastabin.rb
                 </a>
         <br />
             </td>
@@ -169,7 +169,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 29</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 29</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value str">'r'</span>, <span class="ruby-identifier">index_filename</span>=<span class="ruby-keyword kw">nil</span>)
                 
                 <span class="ruby-ivar">@filename</span>=<span class="ruby-identifier">filename</span>
@@ -228,7 +228,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000005-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 71</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 71</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_fasta_qual</span>(<span class="ruby-identifier">fasta_file_name</span>,<span class="ruby-identifier">qual_file_name</span>)
 
                         <span class="ruby-comment cmt"># use FastaQualFile to read fasta</span>
@@ -269,7 +269,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 96</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 96</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_seq</span>(<span class="ruby-identifier">seq_name</span>, <span class="ruby-identifier">seq_fasta</span>, <span class="ruby-identifier">seq_qual</span>, <span class="ruby-identifier">seq_extras</span>=<span class="ruby-keyword kw">nil</span>)
 
                                 <span class="ruby-keyword kw">if</span> (<span class="ruby-ivar">@added_sequence_count</span> <span class="ruby-operator">%</span> <span class="ruby-constant">SEQUENCES_PER_BLOCK</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
@@ -358,7 +358,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000011-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 279</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 279</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
 
                 <span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@bin_file</span>.<span class="ruby-identifier">closed?</span>         
@@ -385,7 +385,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000010-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 266</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 266</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>
                   <span class="ruby-identifier">index_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@index_filename</span>)
         
@@ -414,7 +414,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000007-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 169</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 169</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-identifier">get_fasta</span>=<span class="ruby-keyword kw">true</span>,<span class="ruby-identifier">get_qual</span>=<span class="ruby-keyword kw">true</span>,<span class="ruby-identifier">get_extras</span>=<span class="ruby-keyword kw">true</span>)
         
                         <span class="ruby-comment cmt">#bin = ''</span>
@@ -466,7 +466,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000008-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 205</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 205</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_by_index</span>(<span class="ruby-identifier">get_fasta</span>=<span class="ruby-keyword kw">true</span>,<span class="ruby-identifier">get_qual</span>=<span class="ruby-keyword kw">true</span>)
                           <span class="ruby-identifier">index_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@index_filename</span>)
                           
@@ -510,7 +510,7 @@ Zlib::BEST_COMPRESSION, Zlib::DEFAULT_COMPRESSION, and an integer from 0 to
             onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000009-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/scbi_fastabin/fastabin.rb, line 233</span>
+<span class="ruby-comment cmt"># File lib/scbi_fqbin/fastabin.rb, line 233</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_seq</span>(<span class="ruby-identifier">seq_name</span>)
 
           <span class="ruby-identifier">index_file</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipReader</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@index_filename</span>)

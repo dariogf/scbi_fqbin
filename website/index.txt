@@ -1,4 +1,4 @@
-h1. scbi_fastabin
+h1. scbi_fqbin
 
 
 h2. What
@@ -6,7 +6,7 @@ h2. What
 
 h2. Installing
 
-<pre syntax="ruby">sudo gem install scbi_fastabin</pre>
+<pre syntax="ruby">sudo gem install scbi_fqbin</pre>
 
 h2. The basics
 
@@ -17,9 +17,9 @@ h2. Demonstration of usage
 
 h2. Forum
 
-"http://groups.google.com/group/scbi_fastabin":http://groups.google.com/group/scbi_fastabin
+"http://groups.google.com/group/scbi_fqbin":http://groups.google.com/group/scbi_fqbin
 
-TODO - create Google Group - scbi_fastabin
+TODO - create Google Group - scbi_fqbin
 
 h2. How to submit patches
 
@@ -27,7 +27,7 @@ Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/
 
 TODO - pick SVN or Git instructions
 
-The trunk repository is <code>svn://rubyforge.org/var/svn/scbi_fastabin/trunk</code> for anonymous access.
+The trunk repository is <code>svn://rubyforge.org/var/svn/scbi_fqbin/trunk</code> for anonymous access.
 
 OOOORRRR
 
@@ -37,7 +37,7 @@ You can fetch the source from either:
 
 * rubyforge: "http://rubyforge.org/scm/?group_id=<%= rubyforge_project_id %>":http://rubyforge.org/scm/?group_id=<%= rubyforge_project_id %>
 
-<pre>git clone git://rubyforge.org/scbi_fastabin.git</pre>
+<pre>git clone git://rubyforge.org/scbi_fqbin.git</pre>
 
 <% else %>
 
@@ -52,21 +52,21 @@ Or you can hack website/index.txt and make it all go away!!
 
 <% end %>
 
-* github: "http://github.com/GITHUB_USERNAME/scbi_fastabin/tree/master":http://github.com/GITHUB_USERNAME/scbi_fastabin/tree/master
+* github: "http://github.com/GITHUB_USERNAME/scbi_fqbin/tree/master":http://github.com/GITHUB_USERNAME/scbi_fqbin/tree/master
 
-<pre>git clone git://github.com/GITHUB_USERNAME/scbi_fastabin.git</pre>
+<pre>git clone git://github.com/GITHUB_USERNAME/scbi_fqbin.git</pre>
 
 
 TODO - add "github_username: username" to ~/.rubyforge/user-config.yml and newgem will reuse it for future projects.
 
 
-* gitorious: "git://gitorious.org/scbi_fastabin/mainline.git":git://gitorious.org/scbi_fastabin/mainline.git
+* gitorious: "git://gitorious.org/scbi_fqbin/mainline.git":git://gitorious.org/scbi_fqbin/mainline.git
 
-<pre>git clone git://gitorious.org/scbi_fastabin/mainline.git</pre>
+<pre>git clone git://gitorious.org/scbi_fqbin/mainline.git</pre>
 
 h3. Build and test instructions
 
-<pre>cd scbi_fastabin
+<pre>cd scbi_fqbin
 rake test
 rake install_gem</pre>
 
@@ -77,5 +77,5 @@ This code is free to use under the terms of the MIT license.
 
 h2. Contact
 
-Comments are welcome. Send an email to "FIXME full name":mailto:FIXME email via the "forum":http://groups.google.com/group/scbi_fastabin
+Comments are welcome. Send an email to "FIXME full name":mailto:FIXME email via the "forum":http://groups.google.com/group/scbi_fqbin
 

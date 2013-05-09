@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib scbi_fastabin]))
+require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib scbi_fqbin]))
 
 require 'zlib'
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'scbi_fastabin'
+require 'scbi_fqbin'
 
 # show the problem
 def show_memory

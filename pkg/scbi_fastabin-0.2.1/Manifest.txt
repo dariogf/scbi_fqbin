@@ -6,7 +6,7 @@ Rakefile
 script/console
 script/destroy
 script/generate
-lib/scbi_fastabin/fbin_file.rb
-lib/scbi_fastabin.rb
+lib/scbi_fqbin/fbin_file.rb
+lib/scbi_fqbin.rb
 test/test_helper.rb
 test/test_scbi_fbin_file.rb

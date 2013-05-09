@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require File.expand_path(
-    File.join(File.dirname(__FILE__), %w[.. lib scbi_fastabin]))
+    File.join(File.dirname(__FILE__), %w[.. lib scbi_fqbin]))
 
 #check args
 if ARGV.count != 2

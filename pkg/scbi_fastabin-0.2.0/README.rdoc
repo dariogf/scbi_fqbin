@@ -1,4 +1,4 @@
-= scbi_fastabin
+= scbi_fqbin
 
 * http://github.com/#{github_username}/#{project_name}
 
@@ -56,7 +56,7 @@ By default the library will be installed to /usr/local/lib and binaries (mk_fqbi
 
 gem sources -a http://www.scbi.uma.es/gems/
 
-gem install scbi_fastabin
+gem install scbi_fqbin
 
 == LICENSE:
 

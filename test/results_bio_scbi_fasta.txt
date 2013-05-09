@@ -1,9 +1,9 @@
-dariogf@osiris:~/progs/ruby/gems/scbi_fastabin/test> time ruby bioruby.rb ~/progs/ruby/hpc_old/data/F143CJN01.fasta ~/progs/ruby/hpc_old/data/F143CJN01.fasta.qual > /dev/null 
+dariogf@osiris:~/progs/ruby/gems/scbi_fqbin/test> time ruby bioruby.rb ~/progs/ruby/hpc_old/data/F143CJN01.fasta ~/progs/ruby/hpc_old/data/F143CJN01.fasta.qual > /dev/null 
 
 real0m34.191s
 user0m33.257s
 sys0m0.363s
-dariogf@osiris:~/progs/ruby/gems/scbi_fastabin/test> time ruby t_scbi_fasta.rb ~/progs/ruby/hpc_old/data/F143CJN01.fasta ~/progs/ruby/hpc_old/data/F143CJN01.fasta.qual > /dev/null 
+dariogf@osiris:~/progs/ruby/gems/scbi_fqbin/test> time ruby t_scbi_fasta.rb ~/progs/ruby/hpc_old/data/F143CJN01.fasta ~/progs/ruby/hpc_old/data/F143CJN01.fasta.qual > /dev/null 
 
 real0m340m24.869s
 user0m330m23.929s

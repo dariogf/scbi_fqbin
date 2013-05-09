@@ -1,5 +1,5 @@
 
-For more information on scbi_fastabin, see http://scbi_fastabin.rubyforge.org
+For more information on scbi_fqbin, see http://scbi_fqbin.rubyforge.org
 
 NOTE: Change this information in PostInstall.txt 
 You can also delete it if you don't want it.

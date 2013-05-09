@@ -1,4 +1,4 @@
-require 'lib/scbi_fastabin/fbin_file'
+require 'lib/scbi_fqbin/fbin_file'
 
 file='c/sample/f1.fbin'
 
