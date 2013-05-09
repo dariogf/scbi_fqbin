@@ -1,16 +1,15 @@
-= scbi_fastabin
+= scbi_fqbin
 
-* http://github.com/#{github_username}/#{project_name}
+* http://github.com/dariogf/scbi_fqbin
 
 == DESCRIPTION:
 
-FastaBin is a gem to handle FastaBin files made by Rafael Larrosa & Dario Guerrero for the Plataforma Andaluza de Bioinformática.
+scbi_fqbin is a gem to handle compressed fastq and fasta files (FQbin files) made by Rafael Larrosa, Gonzalo Claros & Dario Guerrero for the Plataforma Andaluza de Bioinformática.
 
 FastaBin was developed to handle huge fasta and qual files in a more efficient manner. To achieve its goals, FastaBin uses some 
 indexing and compression techniques in order to minimize disk accesses and thus increase the performance when reading fasta and qual files.
 
 == FEATURES/PROBLEMS:
-
 
 
 == SYNOPSIS:
@@ -31,14 +30,11 @@ indexing and compression techniques in order to minimize disk accesses and thus 
 === Using ruby FastaBin gem:
 
 
-	
-	
-
 == REQUIREMENTS:
 
 *libfbin library
 
-To install libfbin library, download this file http://www.scbi.uma.es/gems/libs/libfbin.zip:
+To install libfbin library, download this file http://www.scbi.uma.es/downloads/gems/libfbin.zip:
 
 then unzip with:
 
@@ -47,22 +43,21 @@ unzip libfbin.zip
 and install with:
 
 make
+
 sudo make install
 
 By default the library will be installed to /usr/local/lib and binaries (mk_fbin, rd_seq_fbin and iterate_fbin) to /usr/local/bin
 
 == INSTALL:
 
+gem install scbi_fqbin
 
-gem sources -a http://www.scbi.uma.es/gems/
-
-gem install scbi_fastabin
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2010 FIXME full name
+Copyright (c) 2010 Rafael Larrosa, Gonzalo Claros & Dario Guerrero
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

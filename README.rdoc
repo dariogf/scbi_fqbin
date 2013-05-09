@@ -34,7 +34,7 @@ indexing and compression techniques in order to minimize disk accesses and thus 
 
 *libfbin library
 
-To install libfbin library, download this file http://www.scbi.uma.es/downloads/gems/libs/libfbin.zip:
+To install libfbin library, download this file http://www.scbi.uma.es/downloads/gems/libfbin.zip:
 
 then unzip with:
 
