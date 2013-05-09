@@ -14,7 +14,7 @@ $hoe = Hoe.spec 'scbi_fqbin' do
   self.developer 'Dario Guerrero', 'dariogf@gmail.com'
   self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   self.rubyforge_name       = self.name # TODO this is default value
-  self.extra_deps         = [['scbi_fasta','>= 0.0.1']]
+  self.extra_deps         = [['scbi_fasta','>= 0.0.1'],['ffi','>= 0.0.1']]
 
 end
 

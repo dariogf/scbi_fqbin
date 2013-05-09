@@ -3,6 +3,6 @@ $: << File.join(File.dirname(__FILE__),File.basename(__FILE__,File.extname(__FIL
 # require 'fastabin'
 require 'fbin_file'
 
-module ScbiFastabin
-  VERSION = '0.2.1'
+module ScbiFqbin
+   VERSION = '0.2.2'
 end
