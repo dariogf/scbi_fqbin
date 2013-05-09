@@ -68,7 +68,12 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
       }
       
       int same_qual=1;
-      
+
+			// int repeated_count=0;
+			// int repeated_start=0;
+			// int max_repeated_count=0;
+			// int max_repeated_start=0;
+			
       // process qual string
       for( i = 0; i < strlen(qual); ++i)
       {
@@ -85,7 +90,20 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
               qual[i]=file->flatten_qual;
           }
           
-          if (qual[i]!=old) {same_qual=0;}
+					//           if (qual[i]!=old) {
+					// 	if (repeated_count>=max_repeated_count) {
+					// 		max_repeated_start=repeated_start;
+					// 		max_repeated_count=repeated_count;
+					// 	}
+					// 	
+					// 	repeated_start=i;
+					// 	repeated_count=0;
+					// 	old=qual[i]
+					// 	   
+					// 	same_qual=0;
+					// }
+					
+					// if (qual[i]!=old) {same_qual=0;}
       }
       
       if (same_qual)
@@ -96,6 +114,10 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
           // printf("EQUAL: %s,%s,%ld\n",seq_name, qual,strlen(qual));
       }
       
+
+			// sino hacer RLE
+			
+			
       // printf("\nQ:%s\n",qual);
 	    
 	}
