@@ -1200,7 +1200,7 @@ int get_next_seq_fasta(FILE *file, char *name, char *fasta, char *comments){
     split_name(fname,name,comments);
     
     // get current pos in file
-    fpos_t pos=0;
+    //fpos_t pos;
     
     // read fasta line ---------------------------------
     char c=0;
