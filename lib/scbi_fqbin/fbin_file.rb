@@ -27,7 +27,7 @@ class FbinFile
   APPEND_TO_FILE=2
   extend FFI::Library
   
-  ffi_lib(["libfbin"])
+  ffi_lib(["lib_fqbin"])
 
     functions = [
 

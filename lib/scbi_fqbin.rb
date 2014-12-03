@@ -1,8 +1,6 @@
-$: << File.join(File.dirname(__FILE__),File.basename(__FILE__,File.extname(__FILE__)))
-  
-# require 'fastabin'
-require 'fbin_file'
+require "scbi_fqbin/version"
+require 'scbi_fqbin/fbin_file'
 
 module ScbiFqbin
-   VERSION = '0.2.2'
+  # Your code goes here...
 end
