@@ -1461,6 +1461,13 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
         return EXIT_FAILURE;
     }
     
+    // allocate strings
+    char *qname;
+    if ((qname = malloc(MAXSEQNAME)) == NULL) {
+        puts("Memory allocation error!");
+        return EXIT_FAILURE;
+    }
+    
     
     static time_t curr_time=0;
     static time_t prev_time=0;
@@ -1470,7 +1477,8 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
     
     FILE *fastq_file=NULL;
     FILE *extras_file=NULL;
-    
+    FILE *qual_file=NULL;
+
     int valid=0;
     int res=0;
     int r=0;
@@ -1480,6 +1488,16 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
         fastq_file=stdin;
     }else{
         open_file(fname,&fastq_file);
+        strcpy(qname,fname);
+        strcat(qname,".qual");
+
+        if( access( qname, F_OK ) != -1 ) {
+          printf("Reading qual from %s\n",qname);
+          open_file(qname,&qual_file);
+        } else {
+          printf("Qual file %s do not exists\n",qname);
+            // file doesn't exist
+        }
     }
 
     if(efname!=NULL)
@@ -1508,6 +1526,18 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
         {
             r++;
 
+            if(qual_file!=NULL)
+            {
+                  get_next_seq_fasta(qual_file,qname,qual,comments);
+            }
+
+            if (strcmp(name,qname)!=0){
+              fprintf(stderr,"Order in fasta and qual files differs: %s, %s\n",name,qname);
+              res=-1;
+              break;
+            }
+
+
             // printf("======================\nNAME:%s\nSEQ :%s\nQUAL:%s\n", name,fasta,qual);
             // if(strlen(comments)>0)
             // {
@@ -1516,7 +1546,6 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
 
             strcpy(final_extras,comments);
             
-
             // check if there are extras available
             if (strcmp(name,extras_name)==0){
                 strcat(final_extras,extras);
@@ -1549,10 +1578,11 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
     }
 
     curr_time=time(NULL);    
-    printf("\nEnd fastq processing. %d seqs in %.0f s. Rate: %8.2f seqs/s\n",r,difftime(curr_time,prev_time),r/difftime(curr_time,prev_time));
+    printf("\nEnd fasta processing. %d seqs in %.0f s. Rate: %8.2f seqs/s\n",r,difftime(curr_time,prev_time),r/difftime(curr_time,prev_time));
 
     // free mem
     free(name);
+    free(qname);
     free(fasta);
     free(qual);
     free(comments);
@@ -1565,6 +1595,10 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
     if(extras_file!=NULL)
     {
       fclose(extras_file);
+    }
+    if(qual_file!=NULL)
+    {
+      fclose(qual_file);
     }
     close_writes(file);
     
