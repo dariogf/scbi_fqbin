@@ -60,9 +60,16 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
       
       // annotate first qual to compare with rest of quals
       char old=qual[0];
+
+      if (file->discretize_qual>1){
+             // qual[i]=qual[i]-(qual[i] % 2)+2-1;
+             old=(qual[0] / file->discretize_qual)*file->discretize_qual;
+      }
+
       
       // if qual is going to be flattened, take the flatten limit as old
-      if ((file->flatten_qual>0) & (old>=file->flatten_qual))
+      //if ((file->flatten_qual>0) & (old>=file->flatten_qual))
+      if ((file->flatten_qual>0))
       {
           old=file->flatten_qual;
       }
@@ -103,7 +110,7 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
 					// 	same_qual=0;
 					// }
 					
-					// if (qual[i]!=old) {same_qual=0;}
+					if (qual[i]!=old) {same_qual=0;}
       }
       
       if (same_qual)
@@ -118,9 +125,10 @@ int write_seq(struct file_data *file, char *seq_name, char *fasta, char *qual, c
 			// sino hacer RLE
 			
 			
-      // printf("\nQ:%s\n",qual);
+     //printf("\nQ:%s\n",qual);
 	    
 	}
+
     // printf("Calc fasta_len\n");
     // printf("Calculated fasta_len\n");
 
@@ -1435,6 +1443,12 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
         return EXIT_FAILURE;
     }
     
+    char *qual2;
+    if ((qual2 = malloc(MAXSEQLENGTH)) == NULL) {
+        puts("Memory allocation error!");
+        return EXIT_FAILURE;
+    }
+
     char *comments;
     if ((comments = malloc(MAXSEQLENGTH)) == NULL) {
         puts("Memory allocation error!");
@@ -1517,7 +1531,7 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
       get_next_seq_fasta(extras_file,extras_name,extras,comments);
     }
     
-    strcpy(qual,"");
+    strcpy(qual2,"");
     qual[0]=0;
     
     // for each sequence on fastq file
@@ -1528,7 +1542,25 @@ int process_fasta(char *fname, char *efname, char *outname, int discretize_qual,
 
             if(qual_file!=NULL)
             {
-                  get_next_seq_fasta(qual_file,qname,qual,comments);
+                  get_next_seq_fasta(qual_file,qname,qual2,comments);
+
+                    // Convert  to fastq
+                    // char qual[150000];
+                     strcpy(qual,"");
+                     
+                     char *sep = " ";
+                     char *word, *brkt;
+                    // 
+                     for (word = strtok_r(qual2, sep, &brkt);
+                          word;
+                          word = strtok_r(NULL, sep, &brkt))
+                     {
+                          sprintf(qual,"%s%c",qual,atoi(word)+33);
+                          //strcat(qual,".");
+                          //printf("%s,%c\n",word, atoi(word)+33);
+                    // 
+                    }
+                    //printf("%s\n",qual);
             }
 
             if (strcmp(name,qname)!=0){
